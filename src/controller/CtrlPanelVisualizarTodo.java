@@ -6,10 +6,11 @@ import model.Cuenta;
 import model.Lista;
 import model.Nodo;
 import view.PanelPrincipal;
+import view.PanelVisualizarTodo;
 
-public class CtrlPanelPrincipal {
+public class CtrlPanelVisualizarTodo {
 
-	public static void cargarLista() {				
+	public static void mostrarLista() {
 		DefaultListModel<String> listaMostrar = new DefaultListModel<>();
 		
 		Lista listaCuentas = CtrlLista.getListaCuentas();
@@ -24,20 +25,8 @@ public class CtrlPanelPrincipal {
 			actual = actual.getSiguiente();
 		}
 		
-		PanelPrincipal.lstCuentas.setModel(listaMostrar); 
+		PanelVisualizarTodo.list.setModel(listaMostrar); 
 		
-	}
-
-	public static void test() {
-		
-	}
-
-	public static void borrarLista() {
-			
-	}
-
-	public static void guardarLista() {
-		 		
 	}
 
 }

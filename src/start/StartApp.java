@@ -1,11 +1,5 @@
 package start;
 
-import java.util.GregorianCalendar;
-
-import controller.CtrlFichero;
-import model.CuentaAhorro;
-import model.CuentaCorriente;
-import model.Lista;
 import view.FrmPrincipal;
 
 public class StartApp {

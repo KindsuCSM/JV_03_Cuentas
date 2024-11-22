@@ -1,11 +1,10 @@
 package model;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 
 public class CuentaAhorro extends Cuenta implements Serializable {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	
 	private int interesAnual;
     private Double saldoInicial;
@@ -34,6 +33,6 @@ public class CuentaAhorro extends Cuenta implements Serializable {
 
 	@Override
 	public String toString() {
-		return "CuentaAhorro [" + super.toString() + "interesAnual: " + interesAnual + ", saldoInicial: " + saldoInicial + "]";
+		return "Cuenta Ahorro       [" + super.toString() + "Interes Anual: " + interesAnual + ", Saldo Inicial: " + saldoInicial + "]";
 	}    
 }

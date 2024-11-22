@@ -1,13 +1,12 @@
 package model;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 
 public class Cuenta implements Serializable{
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	
-	private transient Integer num;
+	private Integer num;
     private String titular;
     private Double saldo;
     private Double saldoMin;
@@ -56,7 +55,7 @@ public class Cuenta implements Serializable{
     	int mes = this.fechaApertura.get(GregorianCalendar.MONTH) + 1;
     	int anio = this.fechaApertura.get(GregorianCalendar.YEAR);
 
-		return String.format("num: " + num + ", titular: " + titular + ", saldo: " + saldo + ", saldoMin: " + saldoMin + ", fecha de apertura: %02d-%02d-%d, ", dia, mes, anio);
+		return String.format("Numero: " + num + ", Titular: " + titular + ", Saldo: " + saldo + ", Saldo Minimo: " + saldoMin + ", Fecha apertura: %02d-%02d-%d, ", dia, mes, anio);
 	}
     
     
