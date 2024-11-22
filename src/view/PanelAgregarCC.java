@@ -10,6 +10,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import controller.CtrlPanelAgregarCC;
+import model.FechaInvalidaException;
+import model.SaldoInferiorException;
 
 public class PanelAgregarCC extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -101,7 +103,12 @@ public class PanelAgregarCC extends JPanel {
 			eraseTxts();
 		});
 		btnGuardar.addActionListener(e -> {
-			CtrlPanelAgregarCC.addCuentaCorriente();
+			try {
+				CtrlPanelAgregarCC.addCuentaCorriente();
+			} catch (SaldoInferiorException | FechaInvalidaException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		});
 		
 	}

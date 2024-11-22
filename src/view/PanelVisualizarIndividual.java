@@ -1,6 +1,9 @@
 package view;
 
 import javax.swing.JPanel;
+
+import controller.CtrlPanelVisualizarIndividual;
+
 import java.awt.BorderLayout;
 import javax.swing.JList;
 import javax.swing.JButton;
@@ -40,10 +43,10 @@ public class PanelVisualizarIndividual extends JPanel {
 	}
 	private void setListeners() {
 		btnAnterior.addActionListener(e -> {
-			
+			CtrlPanelVisualizarIndividual.mostrarAnterior();
 		});
 		btnSiguiente.addActionListener(e -> {
-			
+			CtrlPanelVisualizarIndividual.mostrarSiguiente();
 		});
 		btnCalcular.addActionListener(e -> {
 			

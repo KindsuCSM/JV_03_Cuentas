@@ -33,11 +33,11 @@ public class CtrlPanelPrincipal {
 	}
 
 	public static void borrarLista() {
-			
+		
 	}
 
 	public static void guardarLista() {
-		 		
+		 
 	}
 
 }
