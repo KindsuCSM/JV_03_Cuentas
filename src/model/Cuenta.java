@@ -1,25 +1,29 @@
 package model;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 
-public class Cuenta {
-    private int num;
+public class Cuenta implements Serializable{
+    private static final long serialVersionUID = 1L;
+	
+	private transient Integer num;
     private String titular;
     private Double saldo;
-    private double saldoMin;
+    private Double saldoMin;
     private GregorianCalendar fechaApertura;
 
-    public Cuenta(int num, String titular, Double saldo, double saldoMin, GregorianCalendar fechaApertura) {
+    public Cuenta(Integer num, String titular, Double saldo, Double saldoMin, GregorianCalendar fechaApertura) {
         setNum(num);
         setTitular(titular);
         setSaldo(saldo);
         setSaldoMin(saldoMin);
         setFechaApertura(fechaApertura);
     }
-    public int getNum() {
+    public Integer getNum() {
         return num;
     }
-    public void setNum(int num) {
+    public void setNum(Integer num) {
         this.num = num;
     }
     public String getTitular() {
@@ -34,10 +38,10 @@ public class Cuenta {
     public void setSaldo(Double saldo) {
         this.saldo = saldo;
     }
-    public double getSaldoMin() {
+    public Double getSaldoMin() {
         return saldoMin;
     }
-    public void setSaldoMin(double saldoMin) {
+    public void setSaldoMin(Double saldoMin) {
         this.saldoMin = saldoMin;
     }
     public GregorianCalendar getFechaApertura() {
@@ -46,4 +50,14 @@ public class Cuenta {
     public void setFechaApertura(GregorianCalendar fechaApertura) {
         this.fechaApertura = fechaApertura;
     }
+	@Override
+	public String toString() {
+		int dia = this.fechaApertura.get(GregorianCalendar.DAY_OF_MONTH);
+    	int mes = this.fechaApertura.get(GregorianCalendar.MONTH) + 1;
+    	int anio = this.fechaApertura.get(GregorianCalendar.YEAR);
+
+		return String.format("num: " + num + ", titular: " + titular + ", saldo: " + saldo + ", saldoMin: " + saldoMin + ", fecha de apertura: %02d-%02d-%d, ", dia, mes, anio);
+	}
+    
+    
 }

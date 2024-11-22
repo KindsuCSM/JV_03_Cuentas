@@ -1,11 +1,18 @@
+package start;
+
+import java.util.GregorianCalendar;
+
+import controller.CtrlFichero;
+import model.CuentaAhorro;
+import model.CuentaCorriente;
+import model.Lista;
 import view.FrmPrincipal;
 
-public class Main {
-    public static void main(String[] args) {
-
-        new FrmPrincipal();
+public class StartApp {
+	public static void main(String[] args) {
+		new FrmPrincipal();
 		/*Lista lst = new Lista();
-
+		
 		CuentaAhorro ca1 = new CuentaAhorro(1, "Titular 1", 5000.0, 100.0, new GregorianCalendar(2020, 1, 1), 2, 5000.0);
         CuentaAhorro ca2 = new CuentaAhorro(2, "Titular 2", 7000.0, 200.0, new GregorianCalendar(2021, 2, 15), 3, 7000.0);
         CuentaAhorro ca3 = new CuentaAhorro(3, "Titular 3", 4500.0, 150.0, new GregorianCalendar(2019, 5, 10), 4, 4500.0);
@@ -16,7 +23,7 @@ public class Main {
         CuentaAhorro ca8 = new CuentaAhorro(8, "Titular 8", 9500.0, 400.0, new GregorianCalendar(2022, 8, 25), 5, 9500.0);
         CuentaAhorro ca9 = new CuentaAhorro(9, "Titular 9", 12000.0, 500.0, new GregorianCalendar(2020, 10, 30), 3, 12000.0);
         CuentaAhorro ca10 = new CuentaAhorro(10, "Titular 10", 15000.0, 600.0, new GregorianCalendar(2019, 7, 15), 4, 15000.0);
-
+        
         lst.agregar(ca1);
         lst.agregar(ca2);
         lst.agregar(ca3);
@@ -39,7 +46,7 @@ public class Main {
         CuentaCorriente cc8 = new CuentaCorriente(18, "Titular 18", 8000.0, 300.0, new GregorianCalendar(2020, 8, 9), 18.0, true);
         CuentaCorriente cc9 = new CuentaCorriente(19, "Titular 19", 2500.0, 50.0, new GregorianCalendar(2019, 9, 15), 7.0, false);
         CuentaCorriente cc10 = new CuentaCorriente(20, "Titular 20", 10000.0, 500.0, new GregorianCalendar(2021, 12, 25), 20.0, true);
-
+		
         lst.agregar(cc1);
         lst.agregar(cc2);
         lst.agregar(cc3);
@@ -50,12 +57,12 @@ public class Main {
         lst.agregar(cc8);
         lst.agregar(cc9);
         lst.agregar(cc10);
-
+        
 		CtrlFichero.guardarEnFichero(lst);
-
+		
 		Lista lstRecogida = CtrlFichero.cargarDeFichero();
-
+		
 		lstRecogida.consultarOrdenReal();*/
-
-    }
+	}
+	
 }

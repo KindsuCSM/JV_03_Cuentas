@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class Nodo implements Serializable {

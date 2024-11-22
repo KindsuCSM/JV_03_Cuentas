@@ -1,9 +1,13 @@
 package model;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 
-public class CuentaCorriente extends Cuenta{
-    private double comisionMantenimiento;
+public class CuentaCorriente extends Cuenta implements Serializable{
+    private static final long serialVersionUID = 1L;
+	
+	private double comisionMantenimiento;
     private Boolean isDomiciliado;
 
     public CuentaCorriente(int num, String titular, Double saldo, double saldoMin, GregorianCalendar fechaApertura, double comisionMantenimiento, Boolean isDomiciliado) {
@@ -27,4 +31,9 @@ public class CuentaCorriente extends Cuenta{
     public void setDomiciliado(Boolean domiciliado) {
         isDomiciliado = domiciliado;
     }
+
+	@Override
+	public String toString() {
+		return "CuentaCorriente [ " + super.toString() + "comisionMantenimiento: " + comisionMantenimiento + ", isDomiciliado: " + isDomiciliado + "]";
+	}    
 }

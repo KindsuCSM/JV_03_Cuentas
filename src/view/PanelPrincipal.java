@@ -6,6 +6,8 @@ import controller.CtrlPanelPrincipal;
 import model.Lista;
 
 import java.awt.GridLayout;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
 import java.awt.BorderLayout;
@@ -43,7 +45,7 @@ public class PanelPrincipal extends JPanel {
 		panelLista = new JPanel();
 		add(panelLista, BorderLayout.CENTER);
 		
-		lstCuentas = new JList<Lista>();
+		lstCuentas = new JList<>();
 		panelLista.add(lstCuentas);
 	}
 	
