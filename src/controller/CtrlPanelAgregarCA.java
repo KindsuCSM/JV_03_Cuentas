@@ -18,7 +18,7 @@ public class CtrlPanelAgregarCA {
 		String titular = PanelAgregarCA.txtTitular.getText();
 		Double saldo = Double.parseDouble(PanelAgregarCA.txtSaldo.getText());
 		Double saldoMin = Double.parseDouble(PanelAgregarCA.txtSaldoMin.getText());
-		String fecha = PanelAgregarCC.txtFechaApertura.getText();
+		String fecha = PanelAgregarCA.txtFechaApertura.getText();
 		Integer interesAnual = Integer.parseInt(PanelAgregarCA.txtInteresAnual.getText());
 		Double saldoInicial = Double.parseDouble(PanelAgregarCA.txtSaldoInicial.getText());
 		
@@ -44,7 +44,7 @@ public class CtrlPanelAgregarCA {
 		}
 		
 			
-		if(esApto = true) {
+		if(esApto == true) {
 			CtrlLista.agregarCuentaAhorro(new CuentaAhorro(numCuenta, titular, saldo, saldoMin, fechaApertura, interesAnual , saldoInicial));
 		}		
 	}

@@ -1,8 +1,17 @@
 package start;
+import controller.CtrlFichero;
+import model.CuentaCorriente;
+import model.Lista;
+import model.CuentaAhorro;
+import view.FrmPrincipal;
+
+import java.util.GregorianCalendar;
 
 public class StartApp {
 	public static void main(String[] args) {
 		new FrmPrincipal();
+
+        //Instancias de CuentaAhorro y CuentaCorriente para crear el archivo .dat
 		/*Lista lst = new Lista();
 		
 		CuentaAhorro ca1 = new CuentaAhorro(1, "Titular 1", 5000.0, 100.0, new GregorianCalendar(2020, 1, 1), 2, 5000.0);
