@@ -73,7 +73,7 @@ public class CtrlPanelVisualizarIndividual {
             PanelVisualizarIndividual.btnSiguiente.setEnabled(false);
             PanelVisualizarIndividual.btnUltimo.setEnabled(false);
         }
-        System.out.println(fechaFormateada);
+
         mostrarCuenta();
 
         return true;
