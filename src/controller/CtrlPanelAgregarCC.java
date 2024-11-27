@@ -43,6 +43,8 @@ public class CtrlPanelAgregarCC {
 			
 		if(esApto = true) {
 			CtrlLista.agregarCuentaCorriente(new CuentaCorriente(numCuenta, titular, saldo, saldoMin, fechaApertura, comisionMantenimiento , estaDomiciliado));
+			JOptionPane.showMessageDialog(null, "La cuenta corriente se ha agregado con éxito. ", "Información", JOptionPane.INFORMATION_MESSAGE);
+			borrarCampos();
 		}
 		
 		
@@ -66,5 +68,17 @@ public class CtrlPanelAgregarCC {
 				estaDomiciliado = false;
 			}
 			return estaDomiciliado;
-		}
+	}
+	private static void borrarCampos() {
+		PanelAgregarCC.txtNumCuenta.setText("");
+		PanelAgregarCC.txtTitular.setText("");
+		PanelAgregarCC.txtSaldo.setText("");
+		PanelAgregarCC.txtSaldoMin.setText("");
+		PanelAgregarCC.txtFechaApertura.setText("");
+		PanelAgregarCC.txtComisionMantenimiento.setText("");
+		PanelAgregarCC.rdbtnSi.setSelected(false);
+		PanelAgregarCC.rdbtnNo.setSelected(false);
+	}
+
+
 }

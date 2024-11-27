@@ -1,18 +1,18 @@
 package view;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import controller.CtrlPanelVisualizarTodo;
 
 import java.awt.GridLayout;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import javax.swing.JList;
 
 public class PanelVisualizarTodo extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	public static JList list;
+	private JScrollPane scrollLista;
 	/**
 	 * Create the panel.
 	 */
@@ -42,8 +42,11 @@ public class PanelVisualizarTodo extends JPanel {
 
 
 	private void addComponents() {
+		scrollLista = new JScrollPane();
+		add(scrollLista);
+
 		list = new JList();
-		add(list);
+		scrollLista.setViewportView(list);
 	}
 	private void inicializarLista() {
 		CtrlPanelVisualizarTodo.mostrarLista();

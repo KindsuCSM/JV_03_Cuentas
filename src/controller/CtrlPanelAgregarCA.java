@@ -46,7 +46,9 @@ public class CtrlPanelAgregarCA {
 			
 		if(esApto == true) {
 			CtrlLista.agregarCuentaAhorro(new CuentaAhorro(numCuenta, titular, saldo, saldoMin, fechaApertura, interesAnual , saldoInicial));
-		}		
+			JOptionPane.showMessageDialog(null, "La cuenta de ahorros se ha agregado con éxito. ", "Información", JOptionPane.INFORMATION_MESSAGE);
+			borrarCampos();
+		}
 	}
 	
 	 public static GregorianCalendar convertirFechaAGregorian(String fechaApertura) {
@@ -58,5 +60,17 @@ public class CtrlPanelAgregarCA {
 	        anio = Integer.parseInt(fechaSinConvertir[2]);
 	        return new GregorianCalendar(anio, mes, dia);
 	 }
+
+	 private static void borrarCampos(){
+		PanelAgregarCA.txtNumCuenta.setText("");
+		PanelAgregarCA.txtTitular.setText("");
+		PanelAgregarCA.txtSaldo.setText("");
+		PanelAgregarCA.txtSaldoMin.setText("");
+		PanelAgregarCA.txtFechaApertura.setText("");
+		PanelAgregarCA.txtInteresAnual.setText("");
+		PanelAgregarCA.txtSaldoInicial.setText("");
+
+	}
+
 
 }
