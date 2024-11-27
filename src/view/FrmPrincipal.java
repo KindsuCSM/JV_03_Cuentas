@@ -42,6 +42,8 @@ public class FrmPrincipal extends JFrame {
 		menuBarPrincipal = new MenuBarPrincipal(this, panPrincipal, panAddCC, panAddCA, panSeeUnit, panSeeAll);
         setJMenuBar(menuBarPrincipal.mnBarPrincipal());
 
+		contentPane.add(panPrincipal, BorderLayout.CENTER);
+
 		setVisible(true);
 	}
 
