@@ -210,7 +210,7 @@ public class PanelVisualizarIndividual extends JPanel {
 		});
 
 		btnCalcular.addActionListener(e -> {
-			
+			CtrlPanelVisualizarIndividual.calcular();
 		});
 	}
 

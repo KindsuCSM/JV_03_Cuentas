@@ -6,6 +6,9 @@ import model.*;
 import view.PanelVisualizarIndividual;
 import view.PanelVisualizarTodo;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class CtrlPanelVisualizarIndividual {
 
 //Declaramos los atributos necesarios:
@@ -14,12 +17,19 @@ public class CtrlPanelVisualizarIndividual {
     private static CuentaAhorro cca;
     private static CuentaCorriente ccc;
 
+    private static LocalDate fechaActual = LocalDate.now();
+    private static DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private static String fechaFormateada = fechaActual.format(formato);
+
+    private static int opcionCalcular;
+
     private static boolean quieroUltimo = false, quieroPrimero = false;
 
 
 //Metodo para mostrar siguiente elemento:
     public static void mostrarSiguiente() {
 
+        PanelVisualizarIndividual.btnCalcular.setEnabled(false);
 //Nulo al comenzar, sino comprueba si se busqua el primer o el ultimo elemento, y sino asigna siguiente():
         if (actual == null) {
             actual = listaCuentas.getPrimero();
@@ -43,7 +53,7 @@ public class CtrlPanelVisualizarIndividual {
             PanelVisualizarIndividual.btnSiguiente.setEnabled(false);
             PanelVisualizarIndividual.btnUltimo.setEnabled(false);
         }
-
+        System.out.println(fechaFormateada);
         mostrarCuenta();
 
     }
@@ -52,6 +62,7 @@ public class CtrlPanelVisualizarIndividual {
 //Metodo para mostrar elemento anterior:
 	public static void mostrarAnterior() {
 
+        PanelVisualizarIndividual.btnCalcular.setEnabled(false);
 //Asigna anterior al nodo:
         if(quieroPrimero == true) {
             actual = listaCuentas.getPrimero();
@@ -101,10 +112,17 @@ public class CtrlPanelVisualizarIndividual {
             PanelVisualizarIndividual.txtTitularCA.setText(cca.getTitular());
             PanelVisualizarIndividual.txtNumCuentaCA.setText(cca.getNum().toString());
             PanelVisualizarIndividual.txtSaldoCA.setText(cca.getSaldo().toString());
-            PanelVisualizarIndividual.txtFechaAperturaCA.setText(cca.getFechaApertura().toString());
+            PanelVisualizarIndividual.txtFechaAperturaCA.setText(cca.getFechaApertura());
             PanelVisualizarIndividual.txtInteresAnualCA.setText(String.valueOf(cca.getInteresAnual()));
             PanelVisualizarIndividual.txtSaldoInicialCA.setText(String.valueOf(cca.getSaldoInicial()));
             PanelVisualizarIndividual.txtSaldoMinCA.setText(String.valueOf(cca.getSaldoMin()));
+
+
+            if(comprobarAnio(cca.getFechaApertura())){
+                PanelVisualizarIndividual.btnCalcular.setEnabled(true);
+                opcionCalcular = 1;
+            };
+
 
 
         }catch(Exception e){
@@ -113,10 +131,15 @@ public class CtrlPanelVisualizarIndividual {
             PanelVisualizarIndividual.txtTitular.setText(ccc.getTitular());
             PanelVisualizarIndividual.txtNumCuenta.setText(ccc.getNum().toString());
             PanelVisualizarIndividual.txtSaldo.setText(ccc.getSaldo().toString());
-            PanelVisualizarIndividual.txtFechaApertura.setText(ccc.getFechaApertura().toString());
+            PanelVisualizarIndividual.txtFechaApertura.setText(ccc.getFechaApertura());
             PanelVisualizarIndividual.txtComisionMantenimiento.setText(String.valueOf(ccc.getComisionMantenimiento()));
             PanelVisualizarIndividual.txtDomiciliado.setText(ccc.getDomiciliado().toString());
             PanelVisualizarIndividual.txtSaldoMin.setText(String.valueOf(ccc.getSaldoMin()));
+
+            if(comprobarMes(ccc.getFechaApertura())){
+                PanelVisualizarIndividual.btnCalcular.setEnabled(true);
+                opcionCalcular = 2;
+            };
 
         }
 
@@ -124,10 +147,34 @@ public class CtrlPanelVisualizarIndividual {
         quieroPrimero = false;
     }
 
+    private static boolean comprobarMes(String fecha) {
+        System.out.println("Dia: "+fechaFormateada.substring(0,2));
+        System.out.println("Dia sistema: "+fecha.substring(0,2));
+        return fechaFormateada.substring(0,2).equals(fecha.substring(0,2));
+    }
 
-//Metodo para calcular . . .:
-    public void calcular() {
-		
+    private static boolean comprobarAnio(String fecha ) {
+        System.out.println("Dia: "+fechaFormateada.substring(0,2));
+        System.out.println("Dia sistema: "+fecha.substring(0,2));
+        return fechaFormateada.substring(0,2).equals(fecha.substring(0,2)) && fechaFormateada.substring(3,5).equals(fecha.substring(3,5));
+    }
+
+
+    //Metodo para calcular . . .:
+    public static void calcular() {
+        if(opcionCalcular == 1){
+            listaCuentas.modificarSaldo(actual.getValor(), cca.getSaldo() + cca.getInteresAnual());
+            CtrlLista.sobreescribe(listaCuentas);
+            mostrarCuenta();
+
+        }
+        if(opcionCalcular == 2){
+            listaCuentas.modificarSaldo(actual.getValor(), ccc.getSaldo() - ccc.getComisionMantenimiento());
+            CtrlLista.sobreescribe(listaCuentas);
+            mostrarCuenta();
+        }
+
+        mostrarCuenta();
 	}
 
 }

@@ -43,19 +43,23 @@ public class Cuenta implements Serializable{
     public void setSaldoMin(Double saldoMin) {
         this.saldoMin = saldoMin;
     }
-    public GregorianCalendar getFechaApertura() {
-        return fechaApertura;
+
+    //Agrego la conversion desde el get, para proporcionar fechas como String:
+    public String getFechaApertura() {
+        int dia = this.fechaApertura.get(GregorianCalendar.DAY_OF_MONTH);
+        int mes = this.fechaApertura.get(GregorianCalendar.MONTH) + 1;
+        int anio = this.fechaApertura.get(GregorianCalendar.YEAR);
+
+        return String.format("%02d-%02d-%d", dia, mes, anio);
     }
     public void setFechaApertura(GregorianCalendar fechaApertura) {
         this.fechaApertura = fechaApertura;
     }
 	@Override
 	public String toString() {
-		int dia = this.fechaApertura.get(GregorianCalendar.DAY_OF_MONTH);
-    	int mes = this.fechaApertura.get(GregorianCalendar.MONTH) + 1;
-    	int anio = this.fechaApertura.get(GregorianCalendar.YEAR);
 
-		return String.format("Numero: " + num + ", Titular: " + titular + ", Saldo: " + saldo + ", Saldo Minimo: " + saldoMin + ", Fecha apertura: %02d-%02d-%d, ", dia, mes, anio);
+
+		return "Numero: " + num + ", Titular: " + titular + ", Saldo: " + saldo + ", Saldo Minimo: " + saldoMin + ", Fecha apertura: " + getFechaApertura() + ", " ;
 	}
     
     

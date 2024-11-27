@@ -12,7 +12,13 @@ public class CtrlLista {
 	}
 	
 	public static void setListaCuentas(Lista lstCuentas) {
-		CtrlLista.listaCuentas = lstCuentas;
+		listaCuentas = lstCuentas;
+	}
+
+//Sobreescribe la lista cuando se modifica:
+	public static void sobreescribe(Lista lstCuentas){
+		setListaCuentas(lstCuentas);
+		CtrlFichero.guardarEnFichero(listaCuentas);
 	}
 
 	public static void agregarCuentaCorriente(CuentaCorriente cc) {

@@ -74,6 +74,29 @@ public class Lista implements Serializable{
 		}
 	}
 
+
+//Metodo para modificar saldo de una cuenta pasada como referencia:
+	public void modificarSaldo(Object referencia, double nuevoSaldo) {
+		Nodo temporal = primero;
+
+		while (temporal != null) {
+
+			if (temporal.getValor() instanceof Cuenta) {
+				Cuenta cuenta = (Cuenta) temporal.getValor();
+
+				if (cuenta.equals(referencia)) {
+
+					cuenta.setSaldo(nuevoSaldo);
+					System.out.println("Saldo modificado..");
+					return;
+				}
+			}
+			temporal = temporal.getSiguiente();
+		}
+		System.out.println("No se encontró una cuenta con la referencia.");
+	}
+
+
 	public void consultarOrdenReal() {
 		Nodo temporal = primero;
 		while (temporal != null) {
