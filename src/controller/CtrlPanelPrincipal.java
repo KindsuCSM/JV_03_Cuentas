@@ -34,6 +34,7 @@ public class CtrlPanelPrincipal {
 
 		//Creacion de las cuentas de ahorro con numeroAleatorio y demas fijos.
 		numeroAleatorio = (int) (Math.random()*1000+1);
+
 		CuentaAhorro cuentaAhorroAleat1 = new CuentaAhorro(numeroAleatorio, "TitularAleatorio1", 1900.0, 1200.0, fechaActual, 4, 300.0 );
 		numeroAleatorio = (int) (Math.random()*1000+1);
 		CuentaAhorro cuentaAhorroAleat2 = new CuentaAhorro(numeroAleatorio, "TitularAleatorio2", 1700.0, 800.0, fechaActual, 5, 100.0 );
