@@ -5,6 +5,8 @@ import javax.swing.JPanel;
 import controller.CtrlPanelVisualizarTodo;
 
 import java.awt.GridLayout;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import javax.swing.JList;
 
 public class PanelVisualizarTodo extends JPanel {
@@ -17,9 +19,28 @@ public class PanelVisualizarTodo extends JPanel {
 	public PanelVisualizarTodo() {
 		setLayout(new GridLayout(1, 0, 0, 0));
 		addComponents();
+//		addListeners();
 		inicializarLista();
 
 	}
+
+	private void addListeners() {
+
+//Listener para actualizar la lista cuando se vuelva el foco en el panel VisualizarTodo:
+/*		addFocusListener(new FocusListener() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				inicializarLista();
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+
+			}
+		}); */
+	}
+
+
 	private void addComponents() {
 		list = new JList();
 		add(list);

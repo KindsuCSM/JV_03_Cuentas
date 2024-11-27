@@ -15,9 +15,8 @@ public class CtrlLista {
 		listaCuentas = lstCuentas;
 	}
 
-//Sobreescribe la lista cuando se modifica:
-	public static void sobreescribe(Lista lstCuentas){
-		setListaCuentas(lstCuentas);
+//Sobreescribe la lista, solo se llama desde boton guardar de menuPrincipal:
+	public static void sobreescribe(){
 		CtrlFichero.guardarEnFichero(listaCuentas);
 	}
 
@@ -25,8 +24,13 @@ public class CtrlLista {
 		listaCuentas.agregar(cc);
 		System.out.println("Cuenta agregada correctamente");
 	}
+
 	public static void agregarCuentaAhorro(CuentaAhorro ca) {
 		listaCuentas.agregar(ca);
 		System.out.println("Cuenta agregada correctamente");
+	}
+
+	public static void borrarLista() {
+		setListaCuentas(new Lista());
 	}
 }

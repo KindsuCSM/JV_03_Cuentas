@@ -1,6 +1,6 @@
 package controller;
 
-import javax.swing.DefaultListModel;
+import javax.swing.*;
 
 import model.*;
 import view.PanelVisualizarIndividual;
@@ -25,15 +25,35 @@ public class CtrlPanelVisualizarIndividual {
 
     private static boolean quieroUltimo = false, quieroPrimero = false;
 
+//Metodo llamado por menuBar para que actualice la vista aunque no se haya guardado el archivo:
+    public static void actualizarLista() {
+        listaCuentas = new Lista();
+        listaCuentas = CtrlLista.getListaCuentas();
+        cca = null;
+        ccc = null;
+        actual = null;
+        limpiarCampos();
+        mostrarSiguiente();
+
+
+    }
 
 //Metodo para mostrar siguiente elemento:
-    public static void mostrarSiguiente() {
+    public static boolean mostrarSiguiente() {
 
         PanelVisualizarIndividual.btnCalcular.setEnabled(false);
 //Nulo al comenzar, sino comprueba si se busqua el primer o el ultimo elemento, y sino asigna siguiente():
         if (actual == null) {
+
             actual = listaCuentas.getPrimero();
-        } else if(quieroUltimo == true) {
+
+            if(actual == null) {
+                JOptionPane.showMessageDialog(null, "¡Lista Vacia!", "Información", JOptionPane.INFORMATION_MESSAGE);
+                return false;
+            }
+
+
+        } else if(quieroUltimo) {
             actual = listaCuentas.getUltimo();
         }else {
             actual = actual.getSiguiente();
@@ -56,6 +76,7 @@ public class CtrlPanelVisualizarIndividual {
         System.out.println(fechaFormateada);
         mostrarCuenta();
 
+        return true;
     }
 
 
@@ -64,7 +85,7 @@ public class CtrlPanelVisualizarIndividual {
 
         PanelVisualizarIndividual.btnCalcular.setEnabled(false);
 //Asigna anterior al nodo:
-        if(quieroPrimero == true) {
+        if(quieroPrimero) {
             actual = listaCuentas.getPrimero();
         }else{
             actual = actual.getAnterior();
@@ -126,6 +147,7 @@ public class CtrlPanelVisualizarIndividual {
 
 
         }catch(Exception e){
+
             ccc = (CuentaCorriente) actual.getValor();
             PanelVisualizarIndividual.cambiarPanel(2);
             PanelVisualizarIndividual.txtTitular.setText(ccc.getTitular());
@@ -147,30 +169,58 @@ public class CtrlPanelVisualizarIndividual {
         quieroPrimero = false;
     }
 
+
+//Metodo para limpiar los campos, si la lista se queda vacia no mostrara datos de elementos anteriores:
+    public static void limpiarCampos(){
+        try{
+
+            PanelVisualizarIndividual.txtTitularCA.setText("");
+            PanelVisualizarIndividual.txtNumCuentaCA.setText("");
+            PanelVisualizarIndividual.txtSaldoCA.setText("");
+            PanelVisualizarIndividual.txtFechaAperturaCA.setText("");
+            PanelVisualizarIndividual.txtInteresAnualCA.setText("");
+            PanelVisualizarIndividual.txtSaldoInicialCA.setText("");
+            PanelVisualizarIndividual.txtSaldoMinCA.setText("");
+
+        }catch(Exception e){
+
+            PanelVisualizarIndividual.txtTitular.setText("");
+            PanelVisualizarIndividual.txtNumCuenta.setText("");
+            PanelVisualizarIndividual.txtSaldo.setText("");
+            PanelVisualizarIndividual.txtFechaApertura.setText("");
+            PanelVisualizarIndividual.txtComisionMantenimiento.setText("");
+            PanelVisualizarIndividual.txtDomiciliado.setText("");
+            PanelVisualizarIndividual.txtSaldoMin.setText("");
+
+        }
+    }
+
+
+//Metodos para comprobar las fechas:
     private static boolean comprobarMes(String fecha) {
-        System.out.println("Dia: "+fechaFormateada.substring(0,2));
-        System.out.println("Dia sistema: "+fecha.substring(0,2));
         return fechaFormateada.substring(0,2).equals(fecha.substring(0,2));
     }
 
     private static boolean comprobarAnio(String fecha ) {
-        System.out.println("Dia: "+fechaFormateada.substring(0,2));
-        System.out.println("Dia sistema: "+fecha.substring(0,2));
         return fechaFormateada.substring(0,2).equals(fecha.substring(0,2)) && fechaFormateada.substring(3,5).equals(fecha.substring(3,5));
     }
 
 
-    //Metodo para calcular . . .:
+//Metodo para calcular suma de interesAnual en CA y resta de comisionMantenimiento a CC:
     public static void calcular() {
         if(opcionCalcular == 1){
             listaCuentas.modificarSaldo(actual.getValor(), cca.getSaldo() + cca.getInteresAnual());
-            CtrlLista.sobreescribe(listaCuentas);
+    //Si se modifica el precio, setea la lista a CrtlLista pero no guarda en archivo
+            CtrlLista.setListaCuentas(listaCuentas);
+    //      CtrlLista.sobreescribe(listaCuentas);
             mostrarCuenta();
 
         }
         if(opcionCalcular == 2){
             listaCuentas.modificarSaldo(actual.getValor(), ccc.getSaldo() - ccc.getComisionMantenimiento());
-            CtrlLista.sobreescribe(listaCuentas);
+    //Si se modifica el precio, setea la lista a CrtlLista pero no guarda en archivo
+            CtrlLista.setListaCuentas(listaCuentas);
+    //      CtrlLista.sobreescribe(listaCuentas);
             mostrarCuenta();
         }
 

@@ -1,5 +1,8 @@
 package view;
 
+import controller.CtrlPanelVisualizarIndividual;
+import controller.CtrlPanelVisualizarTodo;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -77,11 +80,17 @@ public class MenuBarPrincipal implements ActionListener {
             cambiarPanel(panAddCC);
             frmPrincipal.setTitle("Agregar cuenta corriente");
         } else if (e.getSource() == itemVisualizarTodo) {
-        	cambiarPanel(panSeeAll);
+            CtrlPanelVisualizarTodo.mostrarLista();
+            cambiarPanel(panSeeAll);
         	frmPrincipal.setTitle("Ver todos");
+    //Probando:
+
         } else if (e.getSource() == itemVisualizarIndividual) {
-        	cambiarPanel(panSeeUnit);
+            CtrlPanelVisualizarIndividual.actualizarLista();
+            cambiarPanel(panSeeUnit);
         	frmPrincipal.setTitle("Ver individualmente");
+    //Probando:
+
         }
     }
 }

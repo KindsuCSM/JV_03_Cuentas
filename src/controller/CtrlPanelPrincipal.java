@@ -1,6 +1,6 @@
 package controller;
 
-import javax.swing.DefaultListModel;
+import javax.swing.*;
 
 import model.*;
 import view.PanelPrincipal;
@@ -11,6 +11,7 @@ public class CtrlPanelPrincipal {
 	private static DefaultListModel<String> listaMostrar = new DefaultListModel<>();
 
 	public static void cargarLista() {
+		listaMostrar.clear();
 		Lista listaCuentas = CtrlLista.getListaCuentas();
 		
 		Nodo actual = listaCuentas.getPrimero();
@@ -58,11 +59,27 @@ public class CtrlPanelPrincipal {
 		PanelPrincipal.lstCuentas.setModel(listaMostrar);
 	}
 
+//Probando:
 	public static void borrarLista() {
-		
+
+		int opcion = JOptionPane.showConfirmDialog(null, "¿Quieres BORRAR la lista completa?", "BORRAR LISTA", JOptionPane.YES_NO_OPTION);
+
+		if (opcion == JOptionPane.YES_OPTION) {
+			listaMostrar.clear();
+			CtrlLista.borrarLista();
+			cargarLista();
+			JOptionPane.showMessageDialog(null, "Se BORRO correctamente!", "Información", JOptionPane.INFORMATION_MESSAGE);
+		}
 	}
 
 	public static void guardarLista() {
+
+		int opcion = JOptionPane.showConfirmDialog(null, "¿Quieres guardar los datos en el fichero?", "Guardar Datos", JOptionPane.YES_NO_OPTION);
+
+		if (opcion == JOptionPane.YES_OPTION) {
+			CtrlLista.sobreescribe();
+			JOptionPane.showMessageDialog(null, "Se guardo correctamente!", "Información", JOptionPane.INFORMATION_MESSAGE);
+		}
 
 	}
 
