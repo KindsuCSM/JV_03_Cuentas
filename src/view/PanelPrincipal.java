@@ -3,11 +3,9 @@ package view;
 import javax.swing.JPanel;
 
 import controller.CtrlPanelPrincipal;
-import model.Lista;
 
 import java.awt.GridLayout;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
 import java.awt.BorderLayout;
@@ -60,7 +58,7 @@ public class PanelPrincipal extends JPanel {
 
 	private void addListeners() {
 		btnCargar.addActionListener(e -> {
-			CtrlPanelPrincipal.cargarLista();
+			CtrlPanelPrincipal.cargarListaDeArchivo();
 		});
 		btnTest.addActionListener(e -> {
 			CtrlPanelPrincipal.test();

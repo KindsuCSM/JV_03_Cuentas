@@ -15,16 +15,17 @@ public class CtrlPanelVisualizarTodo {
 	public static void mostrarLista() {
 		listaMostrar.clear(); // Limpia el modelo antes de llenarlo
 
-		Nodo actual = listaCuentas.getPrimero();
-		while (actual != null) {
-			Cuenta cuenta = (Cuenta) actual.getValor();
+		if (listaCuentas !=null) {
+			Nodo actual = listaCuentas.getPrimero();
+			while (actual != null) {
+				Cuenta cuenta = (Cuenta) actual.getValor();
 
-			String infoCuenta = cuenta.toString();
-			listaMostrar.addElement(infoCuenta);
+				String infoCuenta = cuenta.toString();
+				listaMostrar.addElement(infoCuenta);
 
-			actual = actual.getSiguiente();
+				actual = actual.getSiguiente();
+			}
+			PanelVisualizarTodo.list.setModel(listaMostrar);
 		}
-
-		PanelVisualizarTodo.list.setModel(listaMostrar);
 	}
 }

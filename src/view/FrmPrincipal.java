@@ -3,8 +3,7 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 public class FrmPrincipal extends JFrame {
@@ -24,6 +23,19 @@ public class FrmPrincipal extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 500);
 		setLocationRelativeTo(null);
+
+		try{
+
+	  		JFrame.setDefaultLookAndFeelDecorated(true);
+	  		JDialog.setDefaultLookAndFeelDecorated(true);
+
+			UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+	  		//UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+	  		//UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+	  		//UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
+		} catch (Exception e) {
+	  		e.printStackTrace();
+	 	}
 		
 		contentPane = new JPanel(new BorderLayout());
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

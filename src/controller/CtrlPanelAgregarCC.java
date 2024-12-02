@@ -11,7 +11,7 @@ import view.PanelAgregarCC;
 
 public class CtrlPanelAgregarCC {
 	
-	public static void addCuentaCorriente() throws SaldoInferiorException, FechaInvalidaException {
+	public static void addCuentaCorriente()  {
 		boolean esApto = true;
 		
 		int numCuenta = Integer.parseInt(PanelAgregarCC.txtNumCuenta.getText());

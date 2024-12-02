@@ -13,11 +13,16 @@ import java.util.Locale;
 public class CtrlPanelPrincipal {
 	private static DefaultListModel<String> listaMostrar = new DefaultListModel<>();
 
-	public static void cargarLista() {
+	public static void cargarListaDeArchivo(){
+		CtrlLista.cargarLista(); // El boton de cargar lo usaremos para cargar por primera vez la lista
+		cargarListaEnJList();
+	}
+
+	public static void cargarListaEnJList() {
 		listaMostrar.clear();
 		Lista listaCuentas = CtrlLista.getListaCuentas();
 		 //Vaciar la jlist en caso de que tenga contenido
-		listaMostrar.clear();
+		//listaMostrar.clear();
 		
 		Nodo actual = listaCuentas.getPrimero();
 		while(actual != null) {
@@ -30,7 +35,6 @@ public class CtrlPanelPrincipal {
 		}
 
 		PanelPrincipal.lstCuentas.setModel(listaMostrar); //Volver a cargar los datos
-		
 	}
 
 	public static void test() {
@@ -48,7 +52,7 @@ public class CtrlPanelPrincipal {
 		CtrlLista.agregarCuentaCorriente(new CuentaCorriente(numeroAleatorio, "TitularAleatorio4", 2000.0, 1800.0, fechaActual, 7.8, false));
 
 		//Recargar la lista del JList
-		cargarLista();
+		cargarListaEnJList();
 	}
 
 //Probando:
@@ -58,7 +62,7 @@ public class CtrlPanelPrincipal {
 		if (opcion == JOptionPane.YES_OPTION) {
 			listaMostrar.clear();
 			CtrlLista.borrarLista();
-			cargarLista();
+			cargarListaEnJList();
 			JOptionPane.showMessageDialog(null, "Se BORRO correctamente!", "Información", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
@@ -119,7 +123,7 @@ public class CtrlPanelPrincipal {
 			}
 		}
 
-		cargarLista();
+		cargarListaEnJList();
 	}
 
 	private static Integer diaDelMes(Integer mes, Integer anio) {

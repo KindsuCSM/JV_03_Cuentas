@@ -1,16 +1,31 @@
 package controller;
 
-import model.CuentaAhorro;
-import model.CuentaCorriente;
-import model.Lista;
+import model.*;
 
 public class CtrlLista {
-	private static Lista listaCuentas = CtrlFichero.getListaCuentas();
+	private static Lista listaCuentas = new Lista();
 		
+	public static void cargarLista(){
+		if (listaCuentas == null) {
+			listaCuentas = CtrlFichero.getListaCuentas();
+		}else{
+			Lista lstDeArchivo = CtrlFichero.getListaCuentas();
+			Nodo actualArchivo = lstDeArchivo.getPrimero();
+
+			while (actualArchivo != null) {
+            Cuenta cuentaArchivo = (Cuenta) actualArchivo.getValor();
+            listaCuentas.agregar(cuentaArchivo);
+
+            // Avanzar al siguiente nodo
+            actualArchivo = actualArchivo.getSiguiente();
+        	}
+		}
+	}
+
 	public static Lista getListaCuentas() {
 		return listaCuentas;
 	}
-	
+
 	public static void setListaCuentas(Lista lstCuentas) {
 		listaCuentas = lstCuentas;
 	}

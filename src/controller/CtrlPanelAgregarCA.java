@@ -12,7 +12,7 @@ import view.PanelAgregarCC;
 
 public class CtrlPanelAgregarCA {
 
-	public static void addCuentaAhorro() {
+	public static void addCuentaAhorro()  {
 		boolean esApto = true;
 		int numCuenta = Integer.parseInt(PanelAgregarCA.txtNumCuenta.getText());
 		String titular = PanelAgregarCA.txtTitular.getText();

@@ -10,6 +10,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import controller.CtrlPanelAgregarCC;
+import controller.CtrlPanelPrincipal;
 import model.FechaInvalidaException;
 import model.SaldoInferiorException;
 
@@ -103,12 +104,8 @@ public class PanelAgregarCC extends JPanel {
 			eraseTxts();
 		});
 		btnGuardar.addActionListener(e -> {
-			try {
-				CtrlPanelAgregarCC.addCuentaCorriente();
-			} catch (SaldoInferiorException | FechaInvalidaException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			CtrlPanelAgregarCC.addCuentaCorriente();
+			CtrlPanelPrincipal.cargarListaEnJList();
 		});
 		
 	}

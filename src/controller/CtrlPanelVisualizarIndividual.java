@@ -28,14 +28,14 @@ public class CtrlPanelVisualizarIndividual {
 //Metodo llamado por menuBar para que actualice la vista aunque no se haya guardado el archivo:
     public static void actualizarLista() {
         listaCuentas = new Lista();
-        listaCuentas = CtrlLista.getListaCuentas();
-        cca = null;
-        ccc = null;
-        actual = null;
-        limpiarCampos();
-        mostrarSiguiente();
-
-
+        if (listaCuentas != null){
+            listaCuentas = CtrlLista.getListaCuentas();
+            cca = null;
+            ccc = null;
+            actual = null;
+            limpiarCampos();
+            mostrarSiguiente();
+        }
     }
 
 //Metodo para mostrar siguiente elemento:
@@ -43,38 +43,42 @@ public class CtrlPanelVisualizarIndividual {
 
         PanelVisualizarIndividual.btnCalcular.setEnabled(false);
 //Nulo al comenzar, sino comprueba si se busqua el primer o el ultimo elemento, y sino asigna siguiente():
-        if (actual == null) {
+        if (listaCuentas != null) {
+            if (actual == null) {
 
-            actual = listaCuentas.getPrimero();
+                actual = listaCuentas.getPrimero();
 
-            if(actual == null) {
-                JOptionPane.showMessageDialog(null, "¡Lista Vacia!", "Información", JOptionPane.INFORMATION_MESSAGE);
-                return false;
+                if (actual == null) {
+                    //JOptionPane.showMessageDialog(null, "¡Lista Vacia!", "Información", JOptionPane.INFORMATION_MESSAGE); #####################################################
+                    return false;
+                }
+
+
+            } else if (quieroUltimo) {
+                actual = listaCuentas.getUltimo();
+            } else {
+                actual = actual.getSiguiente();
             }
 
 
-        } else if(quieroUltimo) {
-            actual = listaCuentas.getUltimo();
-        }else {
-            actual = actual.getSiguiente();
-        }
-
 //Activa o desactiva boton anterior:
-        if(actual.getAnterior()==null){
-            PanelVisualizarIndividual.btnAnterior.setEnabled(false);
-            PanelVisualizarIndividual.btnPrimero.setEnabled(false);
-        }else{
-            PanelVisualizarIndividual.btnAnterior.setEnabled(true);
-            PanelVisualizarIndividual.btnPrimero.setEnabled(true);
-        }
+            if (actual.getAnterior() == null) {
+                PanelVisualizarIndividual.btnAnterior.setEnabled(false);
+                PanelVisualizarIndividual.btnPrimero.setEnabled(false);
+            } else {
+                PanelVisualizarIndividual.btnAnterior.setEnabled(true);
+                PanelVisualizarIndividual.btnPrimero.setEnabled(true);
+            }
+
 
 //Desactiva boton siguiente cuando llega al final:
-        if(actual == listaCuentas.getUltimo()){
-            PanelVisualizarIndividual.btnSiguiente.setEnabled(false);
-            PanelVisualizarIndividual.btnUltimo.setEnabled(false);
+            if (actual == listaCuentas.getUltimo()) {
+                PanelVisualizarIndividual.btnSiguiente.setEnabled(false);
+                PanelVisualizarIndividual.btnUltimo.setEnabled(false);
+            }
+            System.out.println(fechaFormateada);
+            mostrarCuenta();
         }
-        System.out.println(fechaFormateada);
-        mostrarCuenta();
 
         return true;
     }

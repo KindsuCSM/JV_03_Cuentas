@@ -5,7 +5,6 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import controller.CtrlLista;
 import controller.CtrlPanelAgregarCA;
 import controller.CtrlPanelPrincipal;
 
@@ -89,6 +88,7 @@ public class PanelAgregarCA extends JPanel {
 		});
 		btnGuardar.addActionListener(e -> {
 			CtrlPanelAgregarCA.addCuentaAhorro();
+			CtrlPanelPrincipal.cargarListaEnJList();
 		});
 		
 	}
