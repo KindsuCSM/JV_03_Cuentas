@@ -16,7 +16,7 @@ import javax.swing.JScrollPane;
 public class PanelPrincipal extends JPanel {
 
 	public static JPanel panelBotones, panelLista;
-	public static JButton btnCargar, btnTest, btnBorrar, btnGuardar;
+	public static JButton btnCargar, btnTest, btnBorrar, btnGuardar, btnCargarRandoms;
 
 	private static final long serialVersionUID = 1L;
 	private JScrollPane scrollLstCuentas;
@@ -44,6 +44,9 @@ public class PanelPrincipal extends JPanel {
 		btnGuardar = new JButton("Guardar");
 		panelBotones.add(btnGuardar);
 
+		btnCargarRandoms = new JButton("Cargar Randoms");
+		panelBotones.add(btnCargarRandoms);
+
 		panelLista = new JPanel();
 		add(panelLista, BorderLayout.CENTER);
 		panelLista.setLayout(new BorderLayout(0, 0));
@@ -67,6 +70,9 @@ public class PanelPrincipal extends JPanel {
 		});
 		btnGuardar.addActionListener(e -> {
 			CtrlPanelPrincipal.guardarLista();
+		});
+		btnCargarRandoms.addActionListener(e -> {
+			CtrlPanelPrincipal.instanciasEmpleado();
 		});
 	}
 
